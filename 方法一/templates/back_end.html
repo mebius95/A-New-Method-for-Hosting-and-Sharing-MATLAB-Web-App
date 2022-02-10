@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>matlab</title>
+    <script src="http://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        function isSelected(){
+            var filterValue;
+            var filter = document.getElementById("filter_type");
+            //获取选中的城市名称,通过遍历所有选项判断是否是节点被选中
+            for(i=0;i<filter.length;i++){
+              //city[i].selected==false;
+                if(filter[i].selected==true){
+                filterValue = filter.options[i].value; //关键点
+                console.log(filterValue)
+                };
+            };
+            return filterValue; 
+        };
+        function showimg(){
+            var filterValue = isSelected();
+            if(filterValue==="1"){
+                document.getElementById('img_fudu').src="http://47377v5775.zicp.fun/lowpassAM.jpg";
+                document.getElementById('img_xiangwei').src="http://47377v5775.zicp.fun/lowpassPM.jpg";
+            }else{
+                document.getElementById('img_fudu').src="http://47377v5775.zicp.fun/带阻幅度响应.jpg";
+                document.getElementById('img_xiangwei').src="http://47377v5775.zicp.fun/带阻相位响应.jpg";
+            }
+
+        }
+    </script>
+    <style>
+         #fudu{
+            width: 700px;
+            height: 500px;
+            position: absolute;
+            border: 1px #F00 solid;
+        }
+        #xiangwei{
+            width: 700px;
+            height: 500px;
+            position: absolute;
+            margin-left: 800px;
+            border: 1px #F00 solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <td><label>通带衰减ap:</label></td>
+                <td><input type="number" v-model.lazy="a"></td>
+            </tr>
+            <tr>
+                <td><label>阻带衰减as:</label></td>
+                <td><input type="number" v-model.lazy="b"></td>
+            </tr>
+            <tr>
+                <td><label>通带截止频率wpl:</label></td>
+                <td><input type="number" v-model.lazy="c"></td>
+            </tr>
+            <tr>
+                <td><label>通带截止频率wph:</label></td>
+                <td><input type="number" v-model.lazy="d"></td>
+            </tr>
+            <tr>
+                <td><label>阻带截止频率wsl:</label></td>
+                <td><input type="number" v-model.lazy="e"></td>
+            </tr>
+            <tr>
+                <td><label>阻带截止频率wsh:</label></td>
+                <td><input type="number" v-model.lazy="f"></td>
+            </tr>
+        </table>
+        <button @click="ajaxx">提交数据</button><br>
+        <select id="filter_type">
+            <option value="1">数字低通滤波器</option>
+            <option value="2">数字带阻滤波器</option>
+        </select>
+        <input type="button" onclick="showimg()" value="加载图象"><br>
+        向后端发送的数据为:<input type="text" id="out" readonly="readonly" style="border:none;">
+        <!-- <input type="text" id="out" readonly="readonly"> -->
+        <div id="fudu">
+            <span>幅度响应</span><br>
+            <img id="img_fudu" style="width: 100%;height: 100%;"/>
+        </div>
+        <div id="xiangwei">
+            <span>相位响应</span><br>
+            <img id="img_xiangwei" style="width: 100%;height: 100%;"/>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:"#app",
+            data:{
+                ip:'http://z4s7377775.qicp.vip/',
+                split:'/',
+                getdata:'',
+                a:'',
+                b:'',
+                c:'',
+                d:'',
+                e:'',
+                f:'',
+            },
+            methods:{
+                ajaxx(){
+                var that = this;
+                var filterValue = isSelected();
+                if(filterValue==="1"){
+                    axios.get(this.ip+filterValue+this.split+this.a+this.split+this.b+this.split+this.c+this.split+this.e).then(
+                        res=>{
+                            console.log(res.data);
+                            this.getdata = res.data;
+                            var out = document.getElementById("out");
+                            out.value = this.getdata;
+                        }
+                    )
+                    
+                // document.getElementById("img_fudu").src = "../低通幅度响应.jpg";
+                // document.getElementById("img_xiangwei").src = "../低通相位响应.jpg"; 
+                }else{
+                    axios.get(this.ip+filterValue+this.split+this.a+this.split+this.b+this.split+this.c+this.split+this.d+this.split+this.e+this.split+this.f).then(
+                        res=>{
+                            console.log(res.data);
+                            this.getdata = res.data;
+                            var out = document.getElementById("out");
+                            out.value = this.getdata;
+                        }
+                    )
+                // document.getElementById("img_fudu").src = "../低通幅度响应.jpg";
+                // document.getElementById("img_xiangwei").src = "../低通相位响应.jpg"; 
+                }
+            }
+        }
+        
+    }
+)   
+    </script>
+</body>
+</html>
