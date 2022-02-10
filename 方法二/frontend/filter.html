@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fliter generator</title>
+    <link rel="stylesheet" type="text/css" href="semantic.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script src="semantic.js"></script>
+    <!-- <link href="{{ url_for('static', path='semantic.css') }}" rel="stylesheet">  -->
+    <!-- {# url_for后的第一个参数为别名 #} -->
+    <!-- <script src="{{ url_for('static', path='jquery-3.6.0.js') }}"></script> -->
+    <!-- <script src="{{ url_for('static', path='semantic.js') }}"></script> -->
+
+    <!-- jquery的引入必须在semantic之前 -->
+    <script src="http://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="filter.js"></script>
+    <!-- <script src="{{ url_for('static', path='filter.js') }}"></script> -->
+
+</head>
+<body>
+
+    <div id="top" class="ui doubling stackable grid container">
+        <div class="ten wide centered column">
+        <h2></h2>
+        <div class="ui centered blue huge header">Fliter Generator</div>
+        
+        <div class="ui selection dropdown">
+            <input type="hidden" id='aa1'>
+            <i class="dropdown icon"></i>
+            <div class="default text">Filtertype</div>
+            <div class="menu transition visition" id="Filtertype_chiose">
+                <div class="item" id="high_pass" value="high_pass" onclick="onClickHander(this.id);Get_srcElement('aa1')">high-pass filter</div>
+                <div class="item" id="low_pass" value="low_pass" onclick="onClickHander(this.id);Get_srcElement('aa1')">low-pass filter</div>
+        </div>
+        </div>
+
+        <div class="ui selection dropdown">
+            <input type="hidden" id='aa2'>
+            <i class="dropdown icon"></i>
+            <div class="default text">window function</div>
+            <div class="menu transition visition" id="win_func_chiose">
+                <div class="item" id="hanning" value="hanning" onclick="onClickHander(this.id);Get_srcElement('aa2')">hanning</div>
+            </div>
+        </div>
+
+        <div class="ui selection dropdown">
+            <input type="hidden" id='aa3'>
+            <i class="dropdown icon"></i>
+            <div class="default text">等波纹最佳逼近法</div>
+            <div class="menu transition visition" id="dengbowen_chiose">
+                <div class="item" id="dengbowen" value="dengbowenvalue" onclick="onClickHander(this.id);Get_srcElement('aa3')">等波纹最佳逼近</div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="ui small header">滤波器参数设置</div><br>
+        <div class="ui labeled input">
+            <label for="wp1" class="ui label">通带截止频率wp1</label>
+            <input id="wp1" type="text" placeholder="0.00" v-model.lazy="b">
+        </div> 
+        <div class="ui labeled input">
+            <label for="ws1" class="ui label">阻带截止频率ws1</label>
+            <input id="ws1" type="text" placeholder="0.00" v-model.lazy="c">
+        </div> 
+
+        <br>
+
+        <h2></h2>
+        <button id="submit" type="submit" class="ui circular button primary" @click="ajaxx()">Genarate Fliter</button>
+        <button id="submit2" type="submit" class="ui circular green button" >Loading image</button>
+
+        <br>
+
+        <div class="ui small header">预览</div><br>
+
+        <div class="ui images">
+            <img class="ui small image" id="fd" src="" alt="幅度响应" onerror="this.src='defaut.gif';this.onerror=null">
+            <img class="ui small image" id="xw" src="" alt="相位响应" onerror="this.src='defaut.gif';this.onerror=null"/>
+            <img class="ui small image" id="dwcj" src=""  alt="单位冲击响应图" onerror="this.src='defaut.gif';this.onerror=null"/>
+        </div>
+
+        <div class="ui small header">幅度响应(滤波器的幅频响应图)</div><br>
+        <img class="ui centered image" id="fd1"  src=""  alt="幅度响应" onerror="this.src='defaut.gif';this.onerror=null"/><br>
+        <div class="ui small header">相位响应(滤波器的相频响应图)</div><br>
+        <img class="ui centered image" id="xw1"  src="" alt="相位响应" onerror="this.src='defaut.gif';this.onerror=null"/><br>
+        <div class="ui small header"><span>单位冲击响应图&nbsp;&nbsp;,&nbsp;&nbsp;&nbsp;最小阶数:</span><span>{{ getdata }}</span></div><br>
+        <img class="ui centered image" id="dwcj1" src="" alt="单位冲击响应图" onerror="this.src='defaut.gif';this.onerror=null"/><br>
+
+
+    </div>
+</div>
+
+<script>
+        var vm = new Vue({
+            el:"#top",
+            data:{
+                ip:'http://192.168.3.7:5000/',
+                b:'',
+                c:'',
+                getdata:'',
+            },
+            methods:{
+                ajaxx(){
+
+                var Filtertypevalue = $("#aa1").val();
+                var winfuncvalue = $("#aa2").val();
+                var dengbowenvalue = $("#aa3").val();
+                    
+                if(Filtertypevalue=='high-pass filter' && winfuncvalue=="hanning"){
+                    axios.get(this.ip+"highpasshanning"+'/'+this.b+'/'+this.c).then(
+                        res=>{
+                            console.log(res.data);
+                            this.getdata = res.data;
+                        }
+                    )
+                }
+
+            }
+        }
+    }
+)
+
+</script>
+
+</body>
+</html>
