@@ -10,19 +10,19 @@
 
 # 导航栏
 
-[1.MATLAB-Web-App-Server](#jump)<br>
-&emsp;[1.1目前部署MATLAB Web App 到云端有两种方案](#jump0)<br>
-[2视频演示](#jump1)<br>
-[3方法详致解说](#jump2)<br>
-&emsp;[3.1方法一](#jump21)<br>
-&emsp;&emsp;[3.11花生壳设置](#jump211)<br>
-&emsp;&emsp;[3.12图床服务器设置](#jump212)<br>
-&emsp;&emsp;[3.13Nginx配置](#jump213)<br>
-&emsp;[3.2方法一](#jump22)<br>
-&emsp;&emsp;[3.21Nginx配置](#jump221)<br>
-&emsp;&emsp;[3.22浏览器设置](#jump222)<br>
-&emsp;&emsp;[3.23后端配置](#jump223)<br>
-&emsp;&emsp;[3.24存在问题](#jump224)<br>
+[1. MATLAB-Web-App-Server](#jump)<br>
+&emsp;[1.1 目前部署MATLAB Web App 到云端有两种方案](#jump0)<br>
+[2. 视频演示](#jump1)<br>
+[3. 方法详致解说](#jump2)<br>
+&emsp;[3.1 方法一](#jump21)<br>
+&emsp;&emsp;[3.11 花生壳设置](#jump211)<br>
+&emsp;&emsp;[3.12 图床服务器设置](#jump212)<br>
+&emsp;&emsp;[3.13 Nginx配置](#jump213)<br>
+&emsp;[3.2 方法一](#jump22)<br>
+&emsp;&emsp;[3.21 Nginx配置](#jump221)<br>
+&emsp;&emsp;[3.22 浏览器设置](#jump222)<br>
+&emsp;&emsp;[3.23 后端配置](#jump223)<br>
+&emsp;&emsp;[3.24 存在问题](#jump224)<br>
 
 # <span id="jump">MATLAB-Web-App-Server</span>
 
