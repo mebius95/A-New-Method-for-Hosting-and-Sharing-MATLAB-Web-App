@@ -1,8 +1,8 @@
 
 # [Tips]
-如果遇到图片加载不出来问题，可能是遇到了DNS污染，
-可以通过https://www.ipaddress.com/ 获取到 raw.githubusercontent.com 的真实ip，并将其添加至C:\Windows\System32\drivers\etc\hosts 中
-如：
+如果遇到图片加载不出来问题，可能是遇到了DNS污染，由于github的图片存储在raw.githubusercontent.com站点上，当其dns被污染时，无法定位到正确的ip地址。<br>
+可以通过https://www.ipaddress.com/ 获取到 raw.githubusercontent.com 的真实ip，并将其添加至C:\Windows\System32\drivers\etc\hosts 中<br>
+***例如***：
 185.199.108.133 raw.githubusercontent.com
 185.199.109.133 raw.githubusercontent.com
 185.199.110.133 raw.githubusercontent.com
