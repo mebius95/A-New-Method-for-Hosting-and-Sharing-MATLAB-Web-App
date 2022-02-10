@@ -6,23 +6,37 @@
 185.199.110.133 raw.githubusercontent.com
 185.199.111.133 raw.githubusercontent.com
 
-# -MATLAB-Web-App-Server-
+[MATLAB-Web-App-Server](#jump)
+- [目前部署MATLAB Web App 到云端有两种方案](#jump0)
+[视频演示](#jump1)
+[方法详致解说](#jump2)
+- [方法一](#jump21)
+- - [花生壳设置](#jump211)
+- - [图床服务器设置](#jump212)
+- - [Nginx配置](#jump213)
+- [方法一](#jump22)
+- - [Nginx配置](#jump221)
+- - [浏览器设置](#jump222)
+- - [后端配置](#jump223)
+- - [存在问题](#jump224)
+
+# <span id="jump">-MATLAB-Web-App-Server-</span>
 
 本项目是为有效解决当前MATLAB Web App Server部署web应用后加载极其缓慢，且无法兼容chrome49内核浏览器，无法进行三方优化等痛点创建。
 
-**目前部署MATLAB Web App 到云端有两种方案：**
+<span id="jump0">**目前部署MATLAB Web App 到云端有两种方案：**</span>
 
 （1）使用官方提供的MATLAB Web App Server工具或MATLAB Production Server工具完成部署；
 
 （2）通过本仓库的方法实现（以下两种方法总体思想相同，实现方式不同）。
 
-# -视频演示
+# <span id="jump1">-视频演示</span>
 
 后续补充
 
-# -方法详致解说
+# <span id="jump2">-方法详致解说</span>
 
-## -方法一
+## <span id="jump21">-方法一</span>
 
 示意图：
 
@@ -50,19 +64,19 @@ Nginx服务器：用于搭建图片服务器，在后端计算完之后用于将
 
 可以使用免费的natapp进行内网穿透，但是缺点是免费的域名在natapp关闭重开之后就会发生变化，这就会需要重新进行配置。
 
-**花生壳设置图下**：<br>
+<span id="jump211">**花生壳设置图下**：</span><br>
 
 ![img](images/116.png)<br>
 
-**图床服务器穿透设置**：<br>
+<span id="jump212">**图床服务器穿透设置**：</span><br>
 
 ![img](images/115.jpg)<br>
 
-**Nginx服务器配置**：<br>
+<span id="jump213">**Nginx服务器配置**：</span><br>
 
 ![img](images/114.jpg)<br>
 
-## -方法二
+## <span id="jump22">-方法二</span>
 
 示意图：
 
@@ -90,7 +104,7 @@ Nginx服务器：用于搭建图片服务器，在后端计算完之后用于将
 
 
 
-### Nginx配置
+### <span id="jump221">Nginx配置</span>
 
 **配置信息**：主要是监控端口和绑定的ip地址
 
@@ -104,19 +118,19 @@ Nginx服务器：用于搭建图片服务器，在后端计算完之后用于将
 
 ![image-20220210135254533](images/image-20220210135254533.png)
 
-### 浏览器设置
+### <span id="jump222">浏览器设置</span>
 
 因为存在跨域安全问题，这里需要在浏览器地址栏搜索chrome://flads进入设置，然后将Block insecure private network requests`改为`disabled`。
 
 ![image-20220210140423153](images/image-20220210140423153.png)
 
-### 后端配置
+### <span id="jump223">后端配置</span>
 
 后端最好将主程序main.py和matlab的m文件放在同一目录下，否则偶尔会出现matlab engine找不到根路径的问题，需要强制cd到指定目录。
 
 ![image-20220210140524535](images/image-20220210140524535.png)
 
-### 存在问题
+### <span id="jump224">存在问题</span>
 
 （1）在多台主机测试的时候发现，两台主机必须处于同一wifi下，
 
