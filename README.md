@@ -34,17 +34,17 @@
 
 > **Backend**
 
-- **后端主程序：**后端使用`Python`作为开发语言，因为`MATLAB`提供给`Python`一个`MATLAB engine API`的包供 `Python `将 `MATLAB `作为计算引擎来调用；
+-  **后端主程序：**后端使用`Python`作为开发语言，因为`MATLAB`提供给`Python`一个`MATLAB engine API`的包供 `Python `将 `MATLAB `作为计算引擎来调用；
 
-- **后端框架：**后端使用`python`的三方库`fastapi`作为后端异步框架，供予前后端异步交流；
+-  **后端框架：**后端使用`python`的三方库`fastapi`作为后端异步框架，供予前后端异步交流；
 
-- **后端服务器：**后端采用轻量快速的 `Python ASGI `框架 `Uvicorn`作为异步服务器使用。
+-  **后端服务器：**后端采用轻量快速的 `Python ASGI `框架 `Uvicorn`作为异步服务器使用。
 
-> **Frontend**
+>  **Frontend**
 
-- **前端：**这里使用的`Semantic UI`作为前框框架绘制页面，选择`jQuery`作为`JavaScript`库编写应用函数，使用`vue`前端框架创建于后端连接的`RESTful API`。
+-  **前端：**这里使用的`Semantic UI`作为前框框架绘制页面，选择`jQuery`作为`JavaScript`库编写应用函数，使用`vue`前端框架创建于后端连接的`RESTful API`。
 
-> **Nginx Server**
+>  **Nginx Server**
 
 **Nginx服务器**：用于部署静态资源，如主页面`index.html`、`semantic UI.css`、`jquert.js`以及默认加载图片等都是存储在该服务器上，用户访问的页面就是从该服务器获取的。同时该服务还会接收后端调用`m脚本`后生成的其它资源，如图片等。
 
