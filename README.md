@@ -24,7 +24,7 @@
 
 示意图：
 
-![image](./clip_image002.png)
+![img](images/clip_image002.png)
 
 > **Backend**
 
