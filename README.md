@@ -53,9 +53,9 @@ Nginx服务器：用于搭建图片服务器，在后端计算完之后用于将
 **花生壳设置图下**：
 ![img](images/116.png)
 **图床服务器穿透设置**：
-![img](images/115.png)
+![img](images/115.jpg)
 **Nginx服务器配置**：
-![img](images/114.png)
+![img](images/114.jpg)
 
 ## -方法二
 
