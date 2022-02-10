@@ -1,4 +1,10 @@
-[TOC]
+[Tips]如果遇到图片加载不出来问题，可能是遇到了DNS污染，
+可以通过https://www.ipaddress.com/获取到raw.githubusercontent.com的真是ip，并将其添加至C:\Windows\System32\drivers\etc\hosts 中
+如：
+185.199.108.133 raw.githubusercontent.com
+185.199.109.133 raw.githubusercontent.com
+185.199.110.133 raw.githubusercontent.com
+185.199.111.133 raw.githubusercontent.com
 
 # -MATLAB-Web-App-Server-
 
