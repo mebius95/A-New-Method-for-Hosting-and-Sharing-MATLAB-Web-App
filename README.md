@@ -1,4 +1,6 @@
-[Tips]如果遇到图片加载不出来问题，可能是遇到了DNS污染，
+
+# [Tips]
+如果遇到图片加载不出来问题，可能是遇到了DNS污染，
 可以通过https://www.ipaddress.com/ 获取到 raw.githubusercontent.com 的真实ip，并将其添加至C:\Windows\System32\drivers\etc\hosts 中
 如：
 185.199.108.133 raw.githubusercontent.com
@@ -6,21 +8,23 @@
 185.199.110.133 raw.githubusercontent.com
 185.199.111.133 raw.githubusercontent.com
 
-[MATLAB-Web-App-Server](#jump)
-- [目前部署MATLAB Web App 到云端有两种方案](#jump0)
-[视频演示](#jump1)
-[方法详致解说](#jump2)
-- [方法一](#jump21)
-- - [花生壳设置](#jump211)
-- - [图床服务器设置](#jump212)
-- - [Nginx配置](#jump213)
-- [方法一](#jump22)
-- - [Nginx配置](#jump221)
-- - [浏览器设置](#jump222)
-- - [后端配置](#jump223)
-- - [存在问题](#jump224)
+# 导航栏
 
-# <span id="jump">-MATLAB-Web-App-Server-</span>
+[MATLAB-Web-App-Server](#jump)<br>
+&emsp;[目前部署MATLAB Web App 到云端有两种方案](#jump0)<br>
+[视频演示](#jump1)<br>
+[方法详致解说](#jump2)<br>
+&emsp;[方法一](#jump21)<br>
+&emsp;&emsp;[花生壳设置](#jump211)<br>
+&emsp;&emsp;[图床服务器设置](#jump212)<br>
+&emsp;&emsp;[Nginx配置](#jump213)<br>
+&emsp;[方法一](#jump22)<br>
+&emsp;&emsp;[Nginx配置](#jump221)<br>
+&emsp;&emsp;[浏览器设置](#jump222)<br>
+&emsp;&emsp;[后端配置](#jump223)<br>
+&emsp;&emsp;[存在问题](#jump224)<br>
+
+# <span id="jump">MATLAB-Web-App-Server</span>
 
 本项目是为有效解决当前MATLAB Web App Server部署web应用后加载极其缓慢，且无法兼容chrome49内核浏览器，无法进行三方优化等痛点创建。
 
