@@ -24,7 +24,7 @@
 
 示意图：
 
-![img](https://github.com/mebius95/-MATLAB-Web-App-Server-/blob/main/images/clip_image002.png)
+![image](https://github.com/mebius95/-MATLAB-Web-App-Server-/blob/main/images/clip_image002.png)
 
 > **Backend**
 
